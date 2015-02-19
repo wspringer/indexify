@@ -1,7 +1,7 @@
 {
   "name": "indexify",
   "version": "0.1.0",
-  "description": "A data collection with multiple indexes. ",
+  "description": "A simple collection that will automatically update multiple indexes.",
   "main": "lib/index.js",
   "scripts": {
     "watch": "mocha --watch -C --compilers coffee:coffee-script/register",
@@ -17,5 +17,9 @@
     "chai": "^2.0.0",
     "coffee-script": "^1.9.1",
     "mocha": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wspringer/indexify.git"
   }
 }
