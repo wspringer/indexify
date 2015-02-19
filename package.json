@@ -3,6 +3,9 @@
   "version": "0.2.1",
   "description": "A simple collection that will automatically update multiple indexes.",
   "main": "lib/index.js",
+  "files": [
+    "lib", "README.md"
+  ],
   "scripts": {
     "watch": "mocha --watch -C --compilers coffee:coffee-script/register",
     "test": "mocha -C --compilers coffee:coffee-script/register",
