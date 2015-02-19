@@ -1,6 +1,6 @@
 expect = (require 'chai').expect
 _ = require 'lodash'
-indexify = require '../src/indexify'
+indexify = require '../src/index'
 
 example = () -> indexify [
   key: 'id'
