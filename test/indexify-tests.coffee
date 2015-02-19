@@ -15,7 +15,7 @@ person1 = { id: "foo", given: "wilfred" }
 person2 = { id: "bar", given: "martine" }
 person3 = { id: "baz", given: "martine" }
 
-describe 'memory', ->
+describe 'indexify', ->
 
   it 'should allow you to add and retrieve objects', ->
     people = example()
