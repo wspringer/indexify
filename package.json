@@ -1,0 +1,21 @@
+{
+  "name": "memory",
+  "version": "0.1.0",
+  "description": "A data collection with multiple indexes. ",
+  "main": "lib/index.js",
+  "scripts": {
+    "watch": "mocha --watch -C --compilers coffee:coffee-script/register",
+    "test": "mocha -C --compilers coffee:coffee-script/register",
+    "prepublish": "coffee -o lib -c src/*.coffee"
+  },
+  "author": "Wilfred Springer",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.2.0"
+  },
+  "devDependencies": {
+    "chai": "^2.0.0",
+    "coffee-script": "^1.9.1",
+    "mocha": "^2.1.0"
+  }
+}
