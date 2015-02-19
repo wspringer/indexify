@@ -39,5 +39,24 @@ describe 'indexify', ->
     expect(people.by.id("baz")).to.equal person3
     expect(people.by.given("martine")).to.have.length(2)
 
-    
+  it 'should index extracted arrays by its elements', ->
+    tagged = indexify [
+      key: 'tags'
+      extract: (obj) -> obj.tags
+      unique: false
+    ]
+    tagged.add { post: 'foo', tags: ['node', 'scala']}
+    tagged.add { post: 'bar', tags: ['node']}
+    expect(tagged.by.tags('node')).to.have.length(2)
+    expect(tagged.by.tags('scala')).to.have.length(1)
+
+  it 'should index duplicates in arrays only once', ->
+    tagged = indexify [
+      key: 'tags'
+      extract: (obj) -> obj.tags
+      unique: false
+    ]
+    tagged.add { post: 'foo', tags: ['node', 'node']}
+    expect(tagged.by.tags('node')).to.have.length(1)
+
 
