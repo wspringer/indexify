@@ -31,5 +31,12 @@ persons.remove({
 });
 ```
 
+## Changes
+
+### 0.2
+
+* If the `extract` function returns an array, then the index will be updated based on the individual
+elements in the array. 
+
 
 
