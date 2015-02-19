@@ -1,8 +1,8 @@
 expect = (require 'chai').expect
 _ = require 'lodash'
-memory = require '../src/memory'
+indexify = require '../src/indexify'
 
-example = () -> memory [
+example = () -> indexify [
   key: 'id'
   extract: (obj) -> obj.id
   unique: true

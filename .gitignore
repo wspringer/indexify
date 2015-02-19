@@ -1,2 +1,4 @@
 lib
+.idea
+atlassian-ide-plugin.xml
 node_modules

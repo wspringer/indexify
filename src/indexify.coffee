@@ -1,6 +1,6 @@
 _ = require 'lodash'
 
-memory = (indexes) ->
+indexify = (indexes) ->
 
   data = _.zipObject(
     _.map indexes, (index) -> [index.key, {}]
@@ -30,5 +30,5 @@ memory = (indexes) ->
     ]
   )
 
-module.exports = memory  
+module.exports = indexify
 
