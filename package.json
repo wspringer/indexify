@@ -1,6 +1,6 @@
 {
   "name": "indexify",
-  "version": "0.3.0",
+  "version": "0.2.1",
   "description": "A simple collection that will automatically update multiple indexes.",
   "main": "lib/index.js",
   "scripts": {
