@@ -59,4 +59,31 @@ describe 'indexify', ->
     tagged.add { post: 'foo', tags: ['node', 'node']}
     expect(tagged.by.tags('node')).to.have.length(1)
 
+  it 'should accept multiple keys when filtering for non-unique indexes', ->
+    tagged = indexify [
+      key: 'tags'
+      extract: (obj) -> obj.tags
+      unique: false
+    ]
+    tagged.add { post: 'foo', tags: ['pet', 'door'] }
+    tagged.add { post: 'bar', tags: ['pet', 'bike'] }
+    expect(tagged.by.tags('pet', 'door')).to.have.length(1)
+    expect(tagged.by.tags('pet', 'bike')).to.have.length(1)
+
+  it 'should throw an error in case the arguments for filtering are wrong', ->
+    posts = indexify [
+      key: 'tags'
+      extract: (obj) -> obj.tags
+      unique: false
+    ,
+      key: 'title',
+      extract: (obj) -> obj.title
+      unique: true
+    ]
+    posts.add { post: 'foo', tags: ['pet', 'door'] }
+    posts.add { post: 'bar', tags: ['pet', 'bike'] }
+    expect(-> posts.by.title('foo', 'bar')).to.throw(/Expecting only one key for unique indexes/)
+    expect(-> posts.by.tags()).to.throw /Expecting at least one key for non-unique indexes/
+
+
 

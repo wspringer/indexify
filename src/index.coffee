@@ -30,7 +30,19 @@ indexify = (indexes) ->
   by: _.zipObject(
     _.map indexes, (index) -> [
       index.key, 
-      (key) -> data[index.key][key]
+      (keys...) ->
+        if index.unique
+          if keys.length != 1 then throw new Error('Expecting only one key for unique indexes')
+          data[index.key][keys[0]]
+        else
+          if keys.length == 0 then throw new Error('Expecting at least one key for non-unique indexes')
+          start = data[index.key][keys[0]]
+          _.reduce(
+            _.tail(keys),
+            (acc, key) ->
+              _.filter acc, (obj) -> _.contains(index.extract(obj), key),
+            start
+          )
     ]
   )
 
