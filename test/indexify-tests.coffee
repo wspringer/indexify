@@ -82,8 +82,7 @@ describe 'indexify', ->
     ]
     posts.add { post: 'foo', tags: ['pet', 'door'] }
     posts.add { post: 'bar', tags: ['pet', 'bike'] }
-    expect(-> posts.by.title('foo', 'bar')).to.throw(/Expecting only one key for unique indexes/)
-    expect(-> posts.by.tags()).to.throw /Expecting at least one key for non-unique indexes/
+    expect(-> posts.by.tags()).to.throw 'Expecting at least one value to search for'
 
 
 

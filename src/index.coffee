@@ -31,11 +31,8 @@ indexify = (indexes) ->
     _.map indexes, (index) -> [
       index.key, 
       (keys...) ->
-        if index.unique
-          if keys.length != 1 then throw new Error('Expecting only one key for unique indexes')
-          data[index.key][keys[0]]
+        if keys.length == 0 then throw new Error('Expecting at least one value to search for')
         else
-          if keys.length == 0 then throw new Error('Expecting at least one key for non-unique indexes')
           start = data[index.key][keys[0]]
           _.reduce(
             _.tail(keys),
