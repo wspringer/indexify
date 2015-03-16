@@ -30,7 +30,16 @@ indexify = (indexes) ->
   by: _.zipObject(
     _.map indexes, (index) -> [
       index.key, 
-      (key) -> data[index.key][key]
+      (keys...) ->
+        if keys.length == 0 then throw new Error('Expecting at least one value to search for')
+        else
+          start = data[index.key][keys[0]]
+          _.reduce(
+            _.tail(keys),
+            (acc, key) ->
+              _.filter acc, (obj) -> _.contains(index.extract(obj), key),
+            start
+          )
     ]
   )
 
